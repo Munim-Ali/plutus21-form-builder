@@ -418,14 +418,17 @@ const App = () => {
         </div>
         <form onSubmit={handleSubmit} className="space-y-4 w-full">
           {sections.map((section) => renderSection(section))}
-          <div className="w-full flex items-center justify-center mt-8">
-            <button
-              type="submit"
-              className="bg-[#3b2f80]  py-2  text-white rounded cursor-pointer text-sm mb-4 min-w-[180px] "
-            >
-              Submit
-            </button>
-          </div>
+
+          {sections.some((section) => section.children.length > 0) && (
+            <div className="w-full flex items-center justify-center mt-8">
+              <button
+                type="submit"
+                className="bg-[#3b2f80]  py-2  text-white rounded cursor-pointer text-sm mb-4 min-w-[180px] "
+              >
+                Submit
+              </button>
+            </div>
+          )}
         </form>
       </section>
       {submittedData && (
